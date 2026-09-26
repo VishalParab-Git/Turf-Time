@@ -9,12 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
+
 @Service
 public class JwtService {
-
+	
 	@Value("${jwt.secret}")
 	private String secret;
 	
@@ -36,7 +38,7 @@ public class JwtService {
 						+ 1000 * 60 * 15
 						)
 				)
-				.signWith(getSigningKey())
+				.signWith(getSigningKey(), SignatureAlgorithm.HS256)
 				.compact();
 
 	}
@@ -75,4 +77,5 @@ public class JwtService {
 				.getPayload()
 				.getExpiration();
 	}
+	
 }

@@ -20,12 +20,14 @@ public class SecurityConfig  {
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 	
 	@Bean
-	SecurityFilterChain securityFilterChail(HttpSecurity http) throws Exception{
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 		
 		http.csrf(csrf-> csrf.disable())
-			.authorizeHttpRequests(auth->auth
+			.authorizeHttpRequests(auth -> auth
 				
 				.requestMatchers("/api/v1/auth/**").permitAll()
+				
+				.requestMatchers("/api/v1/user-profile/**").hasAnyRole("PLAYER","ADMIN")
 				
 				.anyRequest()
 				.authenticated()

@@ -1,12 +1,10 @@
 package com.turftime.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,7 +13,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,40 +27,52 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="turf_owner")
-public class TurfOwnersEntity {
-	
+@Table(name = "user_profile_table")
+public class UserProfileEntity {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
+
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(
 			name="user_id",
-			foreignKey=@ForeignKey(name="fk_owner_user"),
+			referencedColumnName="id",
+			foreignKey=@ForeignKey(name="fk_profile_user"),
 			nullable=false,
 			unique=true
+			
 			)
-	private UserEntity User;
+	private UserEntity user;			//userId
+
+	@Column(name="first_name", nullable=false, length=100)
+	private String firstName;
 	
-	@Column(name="owner_name",nullable=false,length=200)
-	private String ownerName;
+	@Column(name="last_name", nullable=false, length=100)
+	private String lastName;
 	
-	@Column(name="phone",nullable=false, length=10)
+	@Column(name="phone", nullable=false, length=10)
 	private String phone;
 	
-	@Column(name="business_name", unique=true, nullable=false, length=200)
-	private String businessName;
+	@Column(name="address", nullable=false, length=200)
+	private String address;
 	
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TurfsEntity> turfs;
-	//private List<TurfsEntity> turfs=new ArrayList<>();
+	@Column(name="city", nullable=false, length=100)
+	private String city;
+	
+	@Column(name="state", nullable=false, length=100)
+	private String state;
+	
+	@Column(name="country", nullable=false, length=100)
+	private String country;
+	
+	@Column(name="pincode", nullable=false, length=100)
+	private String pincode;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 	
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
-
+	
 }

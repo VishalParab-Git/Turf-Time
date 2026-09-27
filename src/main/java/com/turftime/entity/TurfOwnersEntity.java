@@ -45,7 +45,7 @@ public class TurfOwnersEntity {
 			nullable=false,
 			unique=true
 			)
-	private UserEntity User;
+	private UserEntity user;
 	
 	@Column(name="owner_name",nullable=false,length=200)
 	private String ownerName;

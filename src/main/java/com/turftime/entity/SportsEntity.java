@@ -36,10 +36,11 @@ public class SportsEntity {
 	@Column(name="description", length=500, nullable=false)
 	private String description;
 	
+	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 	
 	@UpdateTimestamp
-	private LocalDateTime UpdatedAt;
+	private LocalDateTime updatedAt;
 
 }

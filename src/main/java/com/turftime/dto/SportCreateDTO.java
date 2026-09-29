@@ -20,5 +20,8 @@ public class SportCreateDTO {
 	@Size(max=500)
 	private String description;
 	
+	@NotBlank(message="Enter Sport Category")
+	private String category;
+	
 
 }

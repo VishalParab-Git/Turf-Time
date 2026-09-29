@@ -36,7 +36,7 @@ public class BookingsEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="booking_number",nullable=false)
+	@Column(name="booking_number",nullable=false,unique=true)
 	private String bookingNumber;	//book code
 	
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -59,7 +59,7 @@ public class BookingsEntity {
 			name="sport_id",
 			foreignKey=@ForeignKey(name="fk_booking_sport")
 			,nullable=false)
-	private SportsEntity sport;  	//sport_id
+	private TurfSportsEntity sport;  	//sport_id
 	
 	@Column(name="booking_date",nullable=false)
 	private LocalDate bookingDate;

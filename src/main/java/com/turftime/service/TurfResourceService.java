@@ -1,0 +1,18 @@
+package com.turftime.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.turftime.dto.TurfResourceCreateDTO;
+import com.turftime.dto.TurfResourceResponseDTO;
+
+@Service
+public interface TurfResourceService {
+
+	TurfResourceResponseDTO createTurfResource(TurfResourceCreateDTO dto);
+	
+	TurfResourceResponseDTO getTurfResourceById(Long turfId, Long turfResourceId);
+	
+	List<TurfResourceResponseDTO> getAllTurfResource(Long turfId);
+}

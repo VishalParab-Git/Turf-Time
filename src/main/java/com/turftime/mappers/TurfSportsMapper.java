@@ -17,6 +17,7 @@ public interface TurfSportsMapper {
 	@Mapping(target="sport",ignore=true)
 	@Mapping(target="createdAt",ignore=true)
 	@Mapping(target="updatedAt",ignore=true)
+	@Mapping(target="active",ignore=true)
 	TurfSportsEntity toEntity(TurfSportCreateDTO dto);
 	
 	@Mapping(target="turfId",source="turf.id")

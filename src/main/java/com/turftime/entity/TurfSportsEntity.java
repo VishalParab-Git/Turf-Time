@@ -29,35 +29,30 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="turfs_sports")
+@Table(name = "turfs_sports")
 public class TurfSportsEntity {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(
-			name="turf_id",
-			foreignKey=@ForeignKey(name="fk_turfsport_turf"),
-			nullable=false
-			)
-	private TurfsEntity turf;	//turfId
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(
-			name="sport_id",
-			foreignKey=@ForeignKey(name="fk_turfsport_sport"),
-			nullable=false
-			)
-	private SportsEntity sport;	//sportId
-	
-	@Column(name="price",nullable=false)
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "turf_id", foreignKey = @ForeignKey(name = "fk_turfsport_turf"), nullable = false)
+	private TurfsEntity turf; // turfId
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "sport_id", foreignKey = @ForeignKey(name = "fk_turfsport_sport"), nullable = false)
+	private SportsEntity sport; // sportId
+
+	@Column(name = "price", nullable = false)
 	private BigDecimal price;
-	
+
+	@Column(nullable = false)
+	private boolean active;
+
 	@CreationTimestamp
 	private LocalDateTime createdAt;
-	
+
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 

@@ -1,6 +1,5 @@
 package com.turftime.dto;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -10,19 +9,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class TurfSportResponseDTO {
+public class ResourceSportResponseDTO {
 
-	private Long id;
+	private  Long id;
 	
-	private Long turfId;
+	private Long resourceId;
 	
-	private Long sportId;
+	private String resourceName;
 	
-	private BigDecimal price;
-	
-	private boolean active;
+	private String turfSportName;
 	
 	private LocalDateTime createdAt;
-	
-	private LocalDateTime updatedAt;
 }

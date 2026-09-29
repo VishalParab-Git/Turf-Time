@@ -38,9 +38,12 @@ public class SecurityConfig  {
 				.requestMatchers("/api/v1/sports/**").hasAnyRole("PLAYER","ADMIN")		//write only admin other only see
 				
 				.requestMatchers("/api/v1/turf-sports/**").hasAnyRole("PLAYER","ADMIN")
+				
+				.requestMatchers("/api/v1/turf-resources/**").hasAnyRole("PLAYER","ADMIN")
 
+				.requestMatchers("/api/v1/resource-sports/**").hasAnyRole("PLAYER","ADMIN")
 
-
+				
 				
 				.anyRequest()
 				.authenticated()

@@ -24,6 +24,8 @@ public class BookingResponseDTO {
 	
 	private String sportName;
 	
+	private String resourceName;
+	
 	private LocalDate bookingDate;
 	
 	private LocalTime startTime;

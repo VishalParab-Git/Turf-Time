@@ -1,5 +1,7 @@
 package com.turftime.mappers;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -19,4 +21,7 @@ public interface TurfMapper {
 	
 	@Mapping(target="ownerId",source="owner.id")
 	TurfResponseDTO toDTO(TurfsEntity entity); 
+	
+	@Mapping(target="ownerId",source="owner.id")
+	List<TurfResponseDTO> toListOfTurfRespnseDTO(List<TurfsEntity> entity);
 }

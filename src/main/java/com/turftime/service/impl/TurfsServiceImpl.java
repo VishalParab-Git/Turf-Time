@@ -1,5 +1,7 @@
 package com.turftime.service.impl;
 
+import java.util.List;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -52,6 +54,14 @@ public class TurfsServiceImpl implements TurfsService {
 				.orElseThrow(()-> new RuntimeException("Turf Owner not found"));
 		
 		return turfMapper.toDTO(turf);
+	}
+
+	@Override
+	public List<TurfResponseDTO> findAllTurfsByCityorState(String city, String state) {
+		
+		List<TurfsEntity> turfs=turfRepository.findAllByCityAndState(city, state);
+		
+		return turfMapper.toListOfTurfRespnseDTO(turfs);
 	}
 	
 	

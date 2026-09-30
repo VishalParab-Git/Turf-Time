@@ -12,4 +12,8 @@ import com.turftime.entity.TurfSportsEntity;
 public interface TurfSportsRepository  extends JpaRepository<TurfSportsEntity,Long>{
 
 	Optional<List<TurfSportsEntity>> findAllByTurfId(Long id);
+	
+    List<TurfSportsEntity> findByTurfIdAndActive(Long turfId, boolean active);
+    
+    List<TurfSportsEntity> findByTurfCityIgnoreCaseAndSportIdAndActiveTrue(String city, Long sportId);
 }

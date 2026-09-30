@@ -34,7 +34,7 @@ public class TurfSportController {
 	
 	@GetMapping("/{id}")
 	@PreAuthorize("hasRole('PLAYER') or hasRole('ADMIN')")
-	public ResponseEntity<List<TurfSportResponseDTO>> getAllTurfSports(@PathVariable("id") Long id){
+	public ResponseEntity<List<TurfSportResponseDTO>> getAllTurfSports(@PathVariable Long id){
 		
 		return ResponseEntity.ok(turfSportsService.getAllTurfSport(id));
 	}

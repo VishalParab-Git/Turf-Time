@@ -53,6 +53,13 @@ public class BookingsEntity {
 			,nullable=false)
 	private TurfsEntity turf;		//turf_id
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(
+			name="turf_resource_id",
+			foreignKey=@ForeignKey(name="fk_booking_Turf_resource"),
+			nullable=false
+			)
+	private TurfResourceEntity turfResource;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(

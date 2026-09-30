@@ -17,6 +17,8 @@ public class BookingCreateDTO {
 	
 	private Long sportId;
 	
+	private Long turfResourceId;
+	
 	private LocalDate bookingDate;
 	
 	private LocalTime startTime;

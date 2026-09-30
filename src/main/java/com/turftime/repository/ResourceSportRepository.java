@@ -11,4 +11,8 @@ import com.turftime.entity.ResourceSportEntity;
 public interface ResourceSportRepository extends JpaRepository<ResourceSportEntity, Long> {
 
 	List<ResourceSportEntity> findByResourceTurfIdAndResourceId(Long turfId, Long resourceId);
+
+	List<ResourceSportEntity> findByTurfSportId(Long turfSportId);
+	
+	List<ResourceSportEntity> findByResourceTurfIdAndTurfSportSportId(Long turfId, Long sportId);
 }

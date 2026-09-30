@@ -42,6 +42,9 @@ public class SecurityConfig  {
 				.requestMatchers("/api/v1/turf-resources/**").hasAnyRole("PLAYER","ADMIN")
 
 				.requestMatchers("/api/v1/resource-sports/**").hasAnyRole("PLAYER","ADMIN")
+				
+				.requestMatchers("/api/v1/bookings/**").hasAnyRole("PLAYER","ADMIN")
+
 
 				
 				

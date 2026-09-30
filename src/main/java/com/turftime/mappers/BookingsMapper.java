@@ -14,6 +14,7 @@ public interface BookingsMapper {
 
 	@Mapping(target="id",ignore=true)
 	@Mapping(target="bookingNumber",ignore=true)
+	@Mapping(target="turfResource", ignore=true)
 	@Mapping(target="user",ignore=true)
 	@Mapping(target="turf",ignore=true)
 	@Mapping(target="sport",ignore=true)
@@ -24,10 +25,12 @@ public interface BookingsMapper {
 	@Mapping(target="userName",ignore=true)
 	@Mapping(target="turfName",source="turf.name")
 	@Mapping(target="sportName",source="sport.sport.name")
+	@Mapping(target="resourceName",source="turfResource.resourceName")
 	BookingResponseDTO toDTO(BookingsEntity entity);
 	
 	@Mapping(target="userName",ignore=true)
 	@Mapping(target="turfName",source="turf.name")
 	@Mapping(target="sportName",source="sport.name")
+	@Mapping(target="turfResourceName",source="turfResource.resourceName")
 	List<BookingResponseDTO> toGetUserAllBookings(List<BookingsEntity> entity);
 }

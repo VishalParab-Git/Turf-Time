@@ -1,5 +1,6 @@
 package com.turftime.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,5 +13,7 @@ public interface TurfRepository  extends JpaRepository<TurfsEntity, Long>{
 
 	Optional<TurfsEntity> findByOwnerUserUsername(String username);
 	
-	//Optional<TurfsEntity> findAllOwnerUserUsername(String username);
+	List<TurfsEntity> findAllByCityAndState(String city, String state);
+	
+    List<TurfsEntity> findByCityAndStatus(String city, com.turftime.enums.TurfStatus status);
 }

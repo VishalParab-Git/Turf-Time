@@ -1,10 +1,15 @@
 package com.turftime.service;
 
+import com.turftime.dto.ChangePasswordRequestDTO;
 import com.turftime.dto.UserRegisterDTO;
 import com.turftime.dto.UserResponseDTO;
 
 public interface UserService {
 
 	public UserResponseDTO registerUser(UserRegisterDTO dto);
+	
+	String changePassword( ChangePasswordRequestDTO dto);
+	
+	public void deleteMyAccount();
 	
 }

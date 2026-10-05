@@ -4,12 +4,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.turftime.dto.UserProfileCreateDTO;
 import com.turftime.dto.UserProfileResponseDTO;
+import com.turftime.dto.UserProfileUpdateDTO;
 import com.turftime.service.UserProfileService;
 
 import jakarta.validation.Valid;
@@ -23,7 +25,7 @@ public class UserProfileController {
 	private final UserProfileService userProfileService;
 	
 	@PostMapping
-	@PreAuthorize("hasRole('PLAYER') or hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('PLAYER','ADMIN')")
 	public ResponseEntity<UserProfileResponseDTO> createProfile( @Valid @RequestBody UserProfileCreateDTO dto) {
 		return ResponseEntity.ok(userProfileService.createProfile(dto));
 		 
@@ -31,11 +33,20 @@ public class UserProfileController {
 	
 	
 	@GetMapping
-	@PreAuthorize("hasRole('PLAYER') or hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('PLAYER','ADMIN')")
 	public ResponseEntity<UserProfileResponseDTO> getProfile() {
 		
 		return ResponseEntity.ok(userProfileService.getProfile());
 		
 	}
+	
+	@PutMapping
+	@PreAuthorize("hasAnyRole('PLAYER','ADMIN')")
+	public ResponseEntity<UserProfileResponseDTO> updateUserProfile(@Valid @RequestBody UserProfileUpdateDTO user) {
+		
+		return ResponseEntity.ok(userProfileService.updateUserProfile(user));
+	}
+	
+	
 
 }

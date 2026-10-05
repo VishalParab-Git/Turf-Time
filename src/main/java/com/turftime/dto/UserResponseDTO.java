@@ -1,6 +1,7 @@
 package com.turftime.dto;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import com.turftime.enums.UserRole;
 import com.turftime.enums.UserStatus;
@@ -16,7 +17,7 @@ public class UserResponseDTO {
 	
 	 private Long id;
 	    private String email;
-	    private UserRole role;
+	    private Set<UserRole> role;
 	    private UserStatus status;
 	    private LocalDateTime createdAt;
 	    private LocalDateTime updatedAt;

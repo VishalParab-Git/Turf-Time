@@ -26,14 +26,14 @@ public class ResourceSportController {
 	private final ResourceSportService resourceSportService;
 
 	@PostMapping
-	@PreAuthorize("hasRole('PLAYER') or hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('TURF_OWNER','ADMIN')")
 	public ResponseEntity<ResourceSportResponseDTO> createResourceSport(@Valid @RequestBody ResourceSportCreateDTO dto) {
 		
 		return ResponseEntity.ok(resourceSportService.createResourceSport(dto));
 	}
 	
 	@GetMapping("/{turfId}/{resourceId}")
-	@PreAuthorize("hasRole('PLAYER') or hasRole('ADMIN')")
+	@PreAuthorize("hasAnyRole('PLAYER','TURF_OWNER','ADMIN')")
 	public ResponseEntity<List<ResourceSportResponseDTO>> getAllResourceSportsById( @PathVariable Long turfId, @PathVariable Long resourceId) {
 		
 		return ResponseEntity.ok(resourceSportService.getResourceSportById(turfId, resourceId));

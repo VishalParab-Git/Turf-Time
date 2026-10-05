@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.turftime.entity.TurfResourceEntity;
+import com.turftime.enums.ResourceStatus;
 
 @Repository
 public interface TurfResourceRepository extends JpaRepository<TurfResourceEntity, Long> {
 
-	Optional<List<TurfResourceEntity>> findAllByTurfId(Long id);
+	List<TurfResourceEntity> findAllByTurfIdAndStatusNot(Long id, ResourceStatus staus);
 	
-	TurfResourceEntity findByTurfIdAndId(Long turfId, Long TurfResourceId);
+	Optional<TurfResourceEntity> findByTurfIdAndId(Long turfId, Long TurfResourceId);
+	
 }

@@ -6,9 +6,13 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.turftime.enums.OwnerStatus;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
@@ -59,6 +63,10 @@ public class TurfOwnersEntity {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TurfsEntity> turfs;
 	//private List<TurfsEntity> turfs=new ArrayList<>();
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name="status", nullable=false)
+    private OwnerStatus status;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;

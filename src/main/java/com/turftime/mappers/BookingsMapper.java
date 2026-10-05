@@ -32,5 +32,5 @@ public interface BookingsMapper {
 	@Mapping(target="turfName",source="turf.name")
 	@Mapping(target="sportName",source="sport.name")
 	@Mapping(target="turfResourceName",source="turfResource.resourceName")
-	List<BookingResponseDTO> toGetUserAllBookings(List<BookingsEntity> entity);
+	List<BookingResponseDTO> toListOfBookingEntityToListOfBookingResponse(List<BookingsEntity> entity);
 }

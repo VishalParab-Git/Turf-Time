@@ -1,6 +1,7 @@
 package com.turftime.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,4 +16,6 @@ public interface ResourceSportRepository extends JpaRepository<ResourceSportEnti
 	List<ResourceSportEntity> findByTurfSportId(Long turfSportId);
 	
 	List<ResourceSportEntity> findByResourceTurfIdAndTurfSportSportId(Long turfId, Long sportId);
+	
+	Optional<ResourceSportEntity>  findByResourceIdAndTurfSportId(Long turfResourceId, Long turfSportId);
 }

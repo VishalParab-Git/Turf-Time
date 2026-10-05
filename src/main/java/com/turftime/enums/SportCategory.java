@@ -1,10 +1,15 @@
 package com.turftime.enums;
 
 public enum SportCategory {
-
-    OUTDOOR,
-    INDOOR,
+	GROUND,
+    COURT,
+    COURT_GAME,   // keep old for compatibility
+    BOARD,
     BOARD_GAME,
-    COURT_GAME,
-    TABLE_GAME
+    TABLE,
+    TABLE_GAME,
+    ROOM,
+    INDOOR,
+    OTHER,
+    OUTDOOR
 }

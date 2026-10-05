@@ -17,6 +17,8 @@ public class SportResponseDTO {
 	
 	private String description;
 	
+	private String category;
+	
 	private LocalDateTime createdAt;
 	
 	private LocalDateTime updatedAt;

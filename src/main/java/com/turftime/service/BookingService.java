@@ -7,6 +7,7 @@ import java.util.List;
 import com.turftime.dto.AvailableSportDTO;
 import com.turftime.dto.BookingCreateDTO;
 import com.turftime.dto.BookingResponseDTO;
+import com.turftime.dto.BookingSummaryDTO;
 import com.turftime.dto.TurfSportResponseDTO;
 
 public interface BookingService {
@@ -15,11 +16,15 @@ public interface BookingService {
 
 	List<BookingResponseDTO> getAllBookings();
 
-	List<TurfSportResponseDTO> findSportsInCity(String city, Long sportId);
-
-	boolean isSlotAvailable(Long turfSportId, LocalDate date, LocalTime startTime, LocalTime endTime);
+	List<TurfSportResponseDTO> findAllTurfsBySportsAndCity(String city, Long sportId);
 
 	List<AvailableSportDTO> availableSportsinTurfs(Long turfId, Long sportId, LocalTime startTime, LocalTime endTime,
 			LocalDate date);
+
+	BookingSummaryDTO getTodaysBooking(Long turfId);
+
+	List<AvailableSportDTO> availableSlotsForSportsInTurf(Long turfId,
+             Long sportId,
+             LocalDate date);
 
 }

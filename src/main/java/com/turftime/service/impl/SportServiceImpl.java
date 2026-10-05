@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.turftime.dto.SportCreateDTO;
 import com.turftime.dto.SportResponseDTO;
+import com.turftime.dto.SportUpdateDTO;
 import com.turftime.entity.SportsEntity;
 import com.turftime.mappers.SportMapper;
 import com.turftime.repository.SportRepository;
@@ -36,6 +37,28 @@ public class SportServiceImpl implements SportsService {
 		return sportMapper.toListOfSports(sports);
 		
 	}
+	
+	@Override
+	public  String deleteAllSport() {
+		 sportRepository.deleteAll();
+		 
+		 return "All Sport deleted successfully!!!!!";
+	 }
+		
+	
+	@Override
+	public SportResponseDTO updateSport(Long sportId, SportUpdateDTO dto) {
+		
+		
+		
+		SportsEntity sport=sportRepository.findById(sportId)
+				.orElseThrow(()-> new RuntimeException("Sport not found"));
+		
+		sportMapper.updateSportDTO(dto, sport);
+		
+		sportRepository.save(sport);
+		return sportMapper.toDTO(sport);
+	} 
 	
 	
 }

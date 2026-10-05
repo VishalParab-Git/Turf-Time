@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import com.turftime.dto.TurfSportCreateDTO;
 import com.turftime.dto.TurfSportResponseDTO;
+import com.turftime.dto.TurfSportUpdateDTO;
 import com.turftime.entity.TurfSportsEntity;
 
 @Mapper(componentModel="spring")
@@ -23,6 +25,8 @@ public interface TurfSportsMapper {
 	@Mapping(target="turfId",source="turf.id")
 	@Mapping(target="sportId",source="sport.id")
 	TurfSportResponseDTO toDTO(TurfSportsEntity entity);
+	
+	void updateTurfSportPrice(TurfSportUpdateDTO dto, @MappingTarget TurfSportsEntity entity );
 	
 	@Mapping(target="turfId",source="turf.id")
 	@Mapping(target="sportId",source="sport.id")

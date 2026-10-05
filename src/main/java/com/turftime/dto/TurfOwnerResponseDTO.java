@@ -16,6 +16,8 @@ public class TurfOwnerResponseDTO {
 	private String ownerName;
 	
 	private String phone;
+
+	private String status;
 	
 	private String businessName;
 	

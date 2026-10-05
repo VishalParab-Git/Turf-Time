@@ -27,23 +27,23 @@ public class SecurityConfig  {
 				
 				.requestMatchers("/api/v1/auth/**").permitAll()
 				
-				.requestMatchers("/api/v1/user-profile/**").hasAnyRole("PLAYER","ADMIN")
+				.requestMatchers("/api/v1/user-profile/**").hasAnyRole("PLAYER","ADMIN")	//ok
 				
-				.requestMatchers("/api/v1/owners/register").hasAnyRole("PLAYER","ADMIN")
+				.requestMatchers("/api/v1/users/me/**").hasAnyRole("PLAYER","ADMIN")		//ok
+								
+				.requestMatchers("/api/v1/owners/**").hasAnyRole("TURF_OWNER","ADMIN","PLAYER")	//ok
 				
-				.requestMatchers("/api/v1/owners/**").hasAnyRole("PLAYER","ADMIN")
+				.requestMatchers("/api/v1/turfs/**").hasAnyRole("TURF_OWNER","ADMIN","PLAYER")	//ok
+												
+				.requestMatchers("/api/v1/sports/**").hasAnyRole("PLAYER","TURF_OWNER","ADMIN")		//write only admin other only see	
 				
-				.requestMatchers("/api/v1/turfs/**").hasAnyRole("PLAYER","ADMIN")
+				.requestMatchers("/api/v1/turf-sports/**").hasAnyRole("PLAYER","TURF_OWNER","ADMIN")	//ok
 				
-				.requestMatchers("/api/v1/sports/**").hasAnyRole("PLAYER","ADMIN")		//write only admin other only see
-				
-				.requestMatchers("/api/v1/turf-sports/**").hasAnyRole("PLAYER","ADMIN")
-				
-				.requestMatchers("/api/v1/turf-resources/**").hasAnyRole("PLAYER","ADMIN")
+				.requestMatchers("/api/v1/turf-resources/**").hasAnyRole("PLAYER","TURF_OWNER","ADMIN")	//ok
 
-				.requestMatchers("/api/v1/resource-sports/**").hasAnyRole("PLAYER","ADMIN")
+				.requestMatchers("/api/v1/resource-sports/**").hasAnyRole("PLAYER","TURF_OWNER","ADMIN")	//ok
 				
-				.requestMatchers("/api/v1/bookings/**").hasAnyRole("PLAYER","ADMIN")
+				.requestMatchers("/api/v1/bookings/**").hasAnyRole("PLAYER","TURF_OWNER","ADMIN")	//ok
 
 
 				

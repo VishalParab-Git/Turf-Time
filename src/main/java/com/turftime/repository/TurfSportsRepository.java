@@ -11,9 +11,16 @@ import com.turftime.entity.TurfSportsEntity;
 @Repository
 public interface TurfSportsRepository  extends JpaRepository<TurfSportsEntity,Long>{
 
-	Optional<List<TurfSportsEntity>> findAllByTurfId(Long id);
+	List<TurfSportsEntity> findAllByTurfId(Long id);
+	
+	Optional<TurfSportsEntity> findByTurfIdAndSportId(Long turfId, Long sportId);
 	
     List<TurfSportsEntity> findByTurfIdAndActive(Long turfId, boolean active);
     
     List<TurfSportsEntity> findByTurfCityIgnoreCaseAndSportIdAndActiveTrue(String city, Long sportId);
+    
+    TurfSportsEntity findByIdAndTurfId(Long turfSportId, Long turfId);
+    
+    void deleteAllByTurfId(Long turfId);
+    
 }

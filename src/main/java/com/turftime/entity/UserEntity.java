@@ -1,6 +1,8 @@
 package com.turftime.entity;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -40,10 +42,12 @@ public class UserEntity {
 	
 	@Column(name="password",nullable=false,length=200)
 	private String password;
-	
+		
+	@Builder.Default
 	@Enumerated(EnumType.STRING)
 	@Column(name="user_role",nullable=false)
-	private UserRole role;
+	private Set<UserRole> role = new HashSet<>();
+
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="user_status",nullable=false)

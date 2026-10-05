@@ -1,10 +1,13 @@
 package com.turftime.security;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -29,13 +32,20 @@ public class JwtService {
 	
 	public String generateToken(UserDetails userDetails) {
 		
+		Map<String, Object> claims = new HashMap<>();
+	    claims.put("roles", userDetails.getAuthorities()
+	                                   .stream()
+	                                   .map(GrantedAuthority::getAuthority)
+	                                   .toList());
+	    
 		return Jwts.builder()
+				.claims(claims)
 				.subject(userDetails.getUsername())
 				.issuedAt(new Date())
 				.expiration(
 						new Date(
 						System.currentTimeMillis()
-						+ 1000 * 60 * 15
+						+ 1000 * 60 * 30
 						)
 				)
 				.signWith(getSigningKey(), SignatureAlgorithm.HS256)
